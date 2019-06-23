@@ -8,7 +8,8 @@
     "test:watch": "npm run test -- --watch",
     "start": "node server.js",
     "start:watch": "nodemon server.js",
-    "populate": "node ./lib/utils/populate-card-data.js"
+    "populate": "node ./lib/utils/populate-card-data.js",
+    "scrape": "node './lib/utils/scrape-scryfall.js"
   },
   "jest": {
     "testEnvironment": "node"
