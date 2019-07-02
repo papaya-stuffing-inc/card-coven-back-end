@@ -37,19 +37,19 @@ describe('Card route tests, database queries', () => {
     expect(animar.body[0].name).toEqual('Animar, Soul of Elements');
     expect(animar.body[0].reprint).toBeFalsy();
   });
-  it('gets all black cards', async() => {
-    const blackCards = await request(app)
-      .get('/api/v1/cards?colors=B&exclusivity=and&exclude=yes');
-    for(let i = 0; i < 50; i++) {
-      expect(blackCards.body[i].colors).toEqual(['B']);
-    }
-  });
-  it('gets cards that are black OR red', async() => {
-    const blackOrRedCards = await request(app)
-      .get('/api/v1/cards?colors=B,R&exclusivity=and&exclude=yes');
-      console.log(blackOrRedCards);
-    for(let i = 0; i < 50; i++) {
-      expect(blackOrRedCards.body[i].colors).toEqual(['B'] || ['R']);
-    }
-  });
+  // it('gets all black cards', async() => {
+  //   const blackCards = await request(app)
+  //     .get('/api/v1/cards?colors=B&exclusivity=and&exclude=yes');
+  //   for(let i = 0; i < 50; i++) {
+  //     expect(blackCards.body[i].colors).toEqual(['B']);
+  //   }
+  // });
+  // it('gets cards that are black OR red', async() => {
+  //   const blackOrRedCards = await request(app)
+  //     .get('/api/v1/cards?colors=B,R&exclusivity=and&exclude=yes');
+  //     console.log(blackOrRedCards);
+  //   for(let i = 0; i < 50; i++) {
+  //     expect(blackOrRedCards.body[i].colors).toEqual(['B'] || ['R']);
+  //   }
+  // });
 });
