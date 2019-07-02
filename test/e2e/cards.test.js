@@ -37,19 +37,33 @@ describe('Card route tests, database queries', () => {
     expect(animar.body[0].name).toEqual('Animar, Soul of Elements');
     expect(animar.body[0].reprint).toBeFalsy();
   });
-  // it('gets all black cards', async() => {
-  //   const blackCards = await request(app)
-  //     .get('/api/v1/cards?colors=B&exclusivity=and&exclude=yes');
-  //   for(let i = 0; i < 50; i++) {
-  //     expect(blackCards.body[i].colors).toEqual(['B']);
-  //   }
-  // });
-  // it('gets cards that are black OR red', async() => {
-  //   const blackOrRedCards = await request(app)
-  //     .get('/api/v1/cards?colors=B,R&exclusivity=and&exclude=yes');
-  //     console.log(blackOrRedCards);
-  //   for(let i = 0; i < 50; i++) {
-  //     expect(blackOrRedCards.body[i].colors).toEqual(['B'] || ['R']);
-  //   }
-  // });
+  it('gets cards that INCLUDE B', async() => {
+    const blackCards = await request(app)
+      .get('/api/v1/cards?colors=B&exact=no&exclude=no');
+    for(let i = 0; i < 50; i++) {
+      expect(blackCards.body[i].colors.includes('B')).toBeTruthy();
+    }
+  });
+  it('gets cards that INCLUDE B or R', async() => {
+    const blackOrRedCards = await request(app)
+      .get('/api/v1/cards?colors=B,R&exact=no&exclude=no');
+    for(let i = 0; i < 50; i++) {
+      expect((blackOrRedCards.body[i].colors.includes('B') || blackOrRedCards.body[i].colors.includes('R'))).toBeTruthy();
+    }
+  });
+  it('gets cards that INCLUDE B EXACT', async() => {
+    const blackCards = await request(app)
+      .get('/api/v1/cards?colors=B&exact=yes&exclude=no');
+    for(let i = 0; i < 50; i++) {
+      expect(blackCards.body[i].colors.includes('B')).toBeTruthy();
+    }
+  });
+  it('gets cards that INCLUDE B or R EXACT', async() => {
+    const blackOrRedCards = await request(app)
+      .get('/api/v1/cards?colors=B,R&exact=yes&exclude=no');
+    for(let i = 0; i < 50; i++) {
+      expect(blackOrRedCards.body[i].colors.includes('B')).toBeTruthy();
+      expect(blackOrRedCards.body[i].colors.includes('R')).toBeTruthy();
+    }
+  });
 });

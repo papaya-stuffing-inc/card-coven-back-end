@@ -1,35 +1,27 @@
-const createColorQuery = require('../../lib/utils/colorQuery');
+const colorQuery = require('../../lib/utils/colorQuery');
 
 describe('create color query tests', () => {
-  it('it creates a query object for OR EXCLUDE', () => {
-    const colors = ['B', 'W', 'R'];
-    const exclude = 'yes';
-    const exclusivity = 'or';
-    const field = 'colors';
-  
-    expect(createColorQuery(colors, exclusivity, exclude, field)).toEqual({
-      $or: 
-        [
-          { colors: ['B'] },
-          { colors: ['W'] },
-          { colors: ['R'] },
-        ]
+  it('queries a single color with no modifiers', () => {
+    expect(colorQuery('colors', 'B', 'no', 'no')).toEqual({
+      colors: 'B'
     });
   });
-  it('it creates a query object for AND EXCLUDE', () => {
-    const colors = ['B', 'W', 'R'];
-    const exclude = 'yes';
-    const exclusivity = 'and';
-    const field = 'colors';
-  
-    expect(createColorQuery(colors, exclusivity, exclude, field)).toEqual({
-      $or: 
-        [
-          { colors: ['B', 'W'] },
-          { colors: ['B', 'R'] },
-          { colors: ['W', 'R'] },
-          { colors: ['B', 'W', 'R'] }
-        ]
+  it('queries multiple colors with no modifiers', () => {
+    expect(colorQuery('colors', 'B,R', 'no', 'no')).toEqual({
+      $or: [
+        { colors: 'B' },
+        { colors: 'R' }
+      ]
+    });
+  });
+  it('queries a single color with exact matching', () => {
+    expect(colorQuery('colors', 'B', 'yes', 'no')).toEqual({
+      colors: 'B'
+    });
+  });
+  it('queries multiple colors with exact matching', () => {
+    expect(colorQuery('colors', 'B,R', 'yes', 'no')).toEqual({
+      colors: { $all: ['B', 'R'] }
     });
   });
 });
