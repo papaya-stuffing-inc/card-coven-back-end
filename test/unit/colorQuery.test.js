@@ -24,4 +24,18 @@ describe('create color query tests', () => {
       colors: { $all: ['B', 'R'] }
     });
   });
+  it('queries a single color with exclude unselected', () => {
+    expect(colorQuery('colors', 'B', 'no', 'yes')).toEqual({
+      colors: ['B']
+    });
+  });
+  it('queries multiple colors with exclude unselected', () => {
+    expect(colorQuery('colors', 'B,R', 'no', 'yes')).toEqual({
+      $and: [
+        { colors: { $nin: ['G', 'W', 'U'] } },
+        { colors: 'B' },
+        { colors: 'R' }
+      ]
+    });
+  });
 });
