@@ -38,4 +38,17 @@ describe('create color query tests', () => {
       ]
     });
   });
+  it('queries a single color with exact exclude', () => {
+    expect(colorQuery('colors', 'B', 'yes', 'yes')).toEqual({
+      colors: ['B']
+    });
+  });
+  it('queries multiple colors with exact exclude', () => {
+    expect(colorQuery('colors', 'B,R', 'yes', 'yes')).toEqual({
+      $and: [
+        { colors: { $nin: ['G', 'W', 'U'] } },
+        { colors: { $all: ['B', 'R'] } }
+      ]
+    });
+  });
 });

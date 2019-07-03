@@ -77,8 +77,17 @@ describe('Card route tests, database queries', () => {
     const blackOrRedCards = await request(app)
       .get('/api/v1/cards?colors=B,R&exact=no&exclude=yes');
     for(let i = 0; i < 50; i++) {
-      if(!(blackOrRedCards.body[i].colors.includes('B') || blackOrRedCards.body[i].colors.includes('R'))) console.log(blackOrRedCards.body[i]);
       expect((blackOrRedCards.body[i].colors.includes('B') || blackOrRedCards.body[i].colors.includes('R'))).toBeTruthy();
+      expect(blackOrRedCards.body[i].colors.includes('G')).toBeFalsy();
+      expect(blackOrRedCards.body[i].colors.includes('W')).toBeFalsy();
+      expect(blackOrRedCards.body[i].colors.includes('U')).toBeFalsy();
+    }
+  });
+  it('gets cards that INCLUDE B or R EXACT EXCLUDE', async() => {
+    const blackOrRedCards = await request(app)
+      .get('/api/v1/cards?colors=B,R&exact=yes&exclude=yes');
+    for(let i = 0; i < 50; i++) {
+      expect((blackOrRedCards.body[i].colors.includes('B') && blackOrRedCards.body[i].colors.includes('R'))).toBeTruthy();
       expect(blackOrRedCards.body[i].colors.includes('G')).toBeFalsy();
       expect(blackOrRedCards.body[i].colors.includes('W')).toBeFalsy();
       expect(blackOrRedCards.body[i].colors.includes('U')).toBeFalsy();
