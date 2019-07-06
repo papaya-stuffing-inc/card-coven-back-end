@@ -93,11 +93,54 @@ describe('Card route tests, database queries', () => {
       expect(blackOrRedCards.body[i].colors.includes('U')).toBeFalsy();
     }
   });
-  // it('gets cards by type_line TYPE', async() => {
-  //   const landCards = await request(app)
-  //     .get('/api/v1/cards?type_line=land');
-  //   for(let i = 0; i < 50; i++) {
-  //     expect(landCards.body[i].type_line.includes('Land')).toBeTruthy();
-  //   }
-  // });
+  it('gets cards by type_line TYPE', async() => {
+    const landCards = await request(app)
+      .get('/api/v1/cards?type_line=land');
+    for(let i = 0; i < 50; i++) {
+      expect(landCards.body[i].type_line.includes('Land')).toBeTruthy();
+    }
+  });
+  it('gets cards by type_line SUBTYPE', async() => {
+    const elementalCards = await request(app)
+      .get('/api/v1/cards?type_line=elemental');
+    for(let i = 0; i < elementalCards.body.length; i++) {
+      expect(elementalCards.body[i].type_line.includes('Elemental')).toBeTruthy();
+    }
+  });
+  it('gets a cards by TEXT', async() => {
+    const destroyCards = await request(app)
+      .get('/api/v1/cards?oracle_text=destroy+target+creature');
+    for(let i = 0; i < destroyCards.body.length; i++) {
+      expect(destroyCards.body[i].oracle_text.includes('Destroy Target Creature'));
+    }
+  });
+  it('gets cards by SET, SINGLE', async() => {
+    const standardCards = await request(app)
+      .get('/api/v1/cards/?formats=standard');
+    for(let i = 0; i < standardCards.body.length; i++) {
+      expect(standardCards.body[i].legalities.standard).toEqual('legal');
+    }
+  });
+  it('gets cards by SET, MULTIPLE', async() => {
+    const standardOrCommanderCards = await request(app)
+      .get('/api/v1/cards/?formats=standard,commander');
+    for(let i = 0; i < standardOrCommanderCards.body.length; i++) {
+      expect((standardOrCommanderCards.body[i].legalities.standard === 'legal' || standardOrCommanderCards.body[i].legalities.commander === 'legal')).toBeTruthy();
+    }
+  });
+  it('gets cards by SET, MULTIPLE 2', async() => {
+    const standardOrCommanderCards = await request(app)
+      .get('/api/v1/cards/?formats=standard,commander&page=2');
+    for(let i = 0; i < standardOrCommanderCards.body.length; i++) {
+      expect((standardOrCommanderCards.body[i].legalities.standard === 'legal' || standardOrCommanderCards.body[i].legalities.commander === 'legal')).toBeTruthy();
+    }
+  });
+  it('gets cards by SET, MULTIPLE 3', async() => {
+    const standardOrCommanderCards = await request(app)
+      .get('/api/v1/cards/?formats=standard,commander&page=3');
+    for(let i = 0; i < standardOrCommanderCards.body.length; i++) {
+      expect((standardOrCommanderCards.body[i].legalities.standard === 'legal' || standardOrCommanderCards.body[i].legalities.commander === 'legal')).toBeTruthy();
+    }
+  });
 });
+

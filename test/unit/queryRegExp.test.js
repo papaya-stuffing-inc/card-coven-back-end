@@ -1,4 +1,4 @@
-const createQueryRegExp = require('../../lib/utils/queryRegExp');
+const createQueryRegExp = require('../../lib/utils/queries/queryRegExp');
 
 describe('queryRegExp function', () => {
   it('takes a string and creates a regular expression out of it', () => {

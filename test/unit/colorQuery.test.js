@@ -1,4 +1,4 @@
-const colorQuery = require('../../lib/utils/colorQuery');
+const colorQuery = require('../../lib/utils/queries/colorQuery');
 
 describe('create color query tests', () => {
   it('queries a single color with no modifiers', () => {
