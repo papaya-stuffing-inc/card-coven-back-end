@@ -93,4 +93,11 @@ describe('Card route tests, database queries', () => {
       expect(blackOrRedCards.body[i].colors.includes('U')).toBeFalsy();
     }
   });
+  // it('gets cards by type_line TYPE', async() => {
+  //   const landCards = await request(app)
+  //     .get('/api/v1/cards?type_line=land');
+  //   for(let i = 0; i < 50; i++) {
+  //     expect(landCards.body[i].type_line.includes('Land')).toBeTruthy();
+  //   }
+  // });
 });
