@@ -17,25 +17,21 @@ describe('Card route tests, database queries', () => {
     const animar = await request(app)
       .get('/api/v1/cards?name=Animar,%20Soul%20of%20Elements');
     expect(animar.body[0].name).toEqual('Animar, Soul of Elements');
-    expect(animar.body[0].reprint).toBeFalsy();
   });
   it('gets a card CASE INSENSITIVE', async() => {
     const animar = await request(app)
       .get('/api/v1/cards?name=animar,%20soul%20of%20elements');
     expect(animar.body[0].name).toEqual('Animar, Soul of Elements');
-    expect(animar.body[0].reprint).toBeFalsy();
   });
   it('gets a card PARTIAL NAME', async() => {
     const animar = await request(app)
       .get('/api/v1/cards?name=animar');
     expect(animar.body[0].name).toEqual('Animar, Soul of Elements');
-    expect(animar.body[0].reprint).toBeFalsy();
   });
   it('gets a card MISSING COMMA', async() => {
     const animar = await request(app)
       .get('/api/v1/cards?name=animar%20soul%20of%20elements');
     expect(animar.body[0].name).toEqual('Animar, Soul of Elements');
-    expect(animar.body[0].reprint).toBeFalsy();
   });
   it('gets cards that INCLUDE B', async() => {
     const blackCards = await request(app)
@@ -114,32 +110,48 @@ describe('Card route tests, database queries', () => {
       expect(destroyCards.body[i].oracle_text.includes('Destroy Target Creature'));
     }
   });
-  it('gets cards by SET, SINGLE', async() => {
+  it('gets cards by FORMAT, SINGLE', async() => {
     const standardCards = await request(app)
       .get('/api/v1/cards/?formats=standard');
     for(let i = 0; i < standardCards.body.length; i++) {
       expect(standardCards.body[i].legalities.standard).toEqual('legal');
     }
   });
-  it('gets cards by SET, MULTIPLE', async() => {
+  it('gets cards by FORMAT, MULTIPLE', async() => {
     const standardOrCommanderCards = await request(app)
       .get('/api/v1/cards/?formats=standard,commander');
     for(let i = 0; i < standardOrCommanderCards.body.length; i++) {
       expect((standardOrCommanderCards.body[i].legalities.standard === 'legal' || standardOrCommanderCards.body[i].legalities.commander === 'legal')).toBeTruthy();
     }
   });
-  it('gets cards by SET, MULTIPLE 2', async() => {
+  it('gets cards by FORMAT, MULTIPLE 2', async() => {
     const standardOrCommanderCards = await request(app)
       .get('/api/v1/cards/?formats=standard,commander&page=2');
     for(let i = 0; i < standardOrCommanderCards.body.length; i++) {
       expect((standardOrCommanderCards.body[i].legalities.standard === 'legal' || standardOrCommanderCards.body[i].legalities.commander === 'legal')).toBeTruthy();
     }
   });
-  it('gets cards by SET, MULTIPLE 3', async() => {
+  it('gets cards by FORMAT, MULTIPLE 3', async() => {
     const standardOrCommanderCards = await request(app)
       .get('/api/v1/cards/?formats=standard,commander&page=3');
     for(let i = 0; i < standardOrCommanderCards.body.length; i++) {
       expect((standardOrCommanderCards.body[i].legalities.standard === 'legal' || standardOrCommanderCards.body[i].legalities.commander === 'legal')).toBeTruthy();
+    }
+  });
+  it('gets cards by SET, SINGLE', async() => {
+    const khansCards = await request(app)
+      .get('/api/v1/cards?sets=Khans+of+Tarkir');
+
+    for(let i = 0; i < khansCards.body.length; i++) {
+      expect(khansCards.body[i].set_name).toEqual('Khans of Tarkir');
+    }
+  });
+  it('gets cards by SET, MULTIPLE', async() => {
+    const khansOrCoreCards = await request(app)
+      .get('/api/v1/cards?sets=Khans+of+Tarkir|Core+Set+2020');
+
+    for(let i = 0; i < khansOrCoreCards.body.length; i++) {
+      expect(khansOrCoreCards.body[i].set_name === 'Khans of Tarkir' || 'Core Set 2010').toBeTruthy();
     }
   });
 });

@@ -24,11 +24,19 @@
     -queries by which formats the cards are legal in, case insensitive
   -Sets
     -queries for cards that match any of the sets the user specifies ($or)
+  -inlude_reprint
+    -Boolean
 
--Headers:
+--Headers:
   -totalCount: Number of cards the query returned
   -pages: number of pages the query returned
   -page: page the query returned
   -hasMore: boolean that reflects if forward paging is possible
   -hasLess: boolean that reflects if back paging is possible
-
+  sortedBy: sends back sorting methods
+  
+--Sorting: 
+  -date_released -- ascending/descending
+  -cmc -- ascending/descending
+  -rarity?
+  -
