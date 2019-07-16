@@ -1,0 +1,3 @@
+-fix card layout edge cases (transform, split, etc);
+-refactor color query util to be more /elegant/
+-add search by rarity

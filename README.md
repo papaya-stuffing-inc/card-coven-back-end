@@ -36,7 +36,8 @@
   sortedBy: sends back sorting methods
   
 --Sorting: 
-  -date_released -- ascending/descending
-  -cmc -- ascending/descending
+  -date_released
+  -cmc 
   -rarity?
-  -
+  -price
+
