@@ -1,0 +1,98 @@
+{
+  "object":"list",
+  "total_cards":251607,
+  "has_more":true,
+  "next_page":"https://api.scryfall.com/cards?page=8",
+  "data":[
+    {
+      "object":"card",
+      "id":"be9caf9a-540b-4dab-a5b1-c79a8c65b87b",
+      "oracle_id":"c74c87f7-3120-4fd7-8735-1d7a7a429643",
+      "multiverse_ids":[465905],
+      "name":"Savage Swipe",
+      "printed_name":"Patada Selvagem",
+      "lang":"pt",
+      "released_at":"2019-06-14",
+      "uri":"https://api.scryfall.com/cards/be9caf9a-540b-4dab-a5b1-c79a8c65b87b",
+      "scryfall_uri":"https://scryfall.com/card/mh1/178/pt/patada-selvagem?utm_source=api",
+      "layout":"normal",
+      "highres_image":false,
+      "image_uris":{
+          "small":"https://img.scryfall.com/cards/small/front/b/e/be9caf9a-540b-4dab-a5b1-c79a8c65b87b.jpg?1560376406",
+          "normal":"https://img.scryfall.com/cards/normal/front/b/e/be9caf9a-540b-4dab-a5b1-c79a8c65b87b.jpg?1560376406",
+          "large":"https://img.scryfall.com/cards/large/front/b/e/be9caf9a-540b-4dab-a5b1-c79a8c65b87b.jpg?1560376406",
+          "png":"https://img.scryfall.com/cards/png/front/b/e/be9caf9a-540b-4dab-a5b1-c79a8c65b87b.png?1560376406",
+          "art_crop":"https://img.scryfall.com/cards/art_crop/front/b/e/be9caf9a-540b-4dab-a5b1-c79a8c65b87b.jpg?1560376406",
+          "border_crop":"https://img.scryfall.com/cards/border_crop/front/b/e/be9caf9a-540b-4dab-a5b1-c79a8c65b87b.jpg?1560376406"
+      },
+      "mana_cost":"{G}",
+      "cmc":1,
+      "type_line":"Sorcery",
+      "printed_type_line":"Feitiço",
+      "oracle_text":"Target creature you control gets +2/+2 until end of turn if its power is 2. Then it fights target creature you don't control. (Each deals damage equal to its power to the other.)",
+      "printed_text":"A criatura alvo que você controla recebe +2/+2 até o final do turno se seu poder for 2. Em seguida, ela luta com a criatura alvo que você não controla. &lt;i&gt;(Cada uma causa dano igual ao seu poder à outra.)&lt;/i&gt;",
+      "colors":["G"],
+      "color_identity":["G"],
+      "legalities":{
+        "standard":"not_legal",
+        "future":"not_legal",
+        "frontier":"not_legal",
+        "modern":"legal",
+        "legacy":"legal",
+        "pauper":"legal",
+        "vintage":"legal",
+        "penny":"not_legal",
+        "commander":"legal",
+        "duel":"legal",
+        "oldschool":"not_legal"
+      },
+      "games":["mtgo","paper"],
+      "reserved":false,
+      "foil":true,
+      "nonfoil":true,
+      "oversized":false,
+      "promo":false,
+      "reprint":false,
+      "variation":false,
+      "set":"mh1",
+      "set_name":"Modern Horizons",
+      "set_type":"draft_innovation",
+      "set_uri":"https://api.scryfall.com/sets/d7efccd6-55bc-4fb8-9138-e72577510a99",
+      "set_search_uri":"https://api.scryfall.com/cards/search?order=set&q=e%3Amh1&unique=prints",
+      "scryfall_set_uri":"https://scryfall.com/sets/mh1?utm_source=api",
+      "rulings_uri":"https://api.scryfall.com/cards/be9caf9a-540b-4dab-a5b1-c79a8c65b87b/rulings",
+      "prints_search_uri":"https://api.scryfall.com/cards/search?order=released&q=oracleid%3Ac74c87f7-3120-4fd7-8735-1d7a7a429643&unique=prints",
+      "collector_number":"178",
+      "digital":false,
+      "rarity":"common",
+      "flavor_text":"Nove gerações de perícia metalúrgica não são páreo para quatrocentos quilos de fúria.",
+      "illustration_id":"75afc730-39f0-4e11-9f27-204197a5785c",
+      "card_back_id":"0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+      "artist":"David Gaillet",
+      "border_color":"black",
+      "frame":"2015",
+      "full_art":false,
+      "textless":false,
+      "booster":true,
+      "story_spotlight":false,
+      "edhrec_rank":3400,
+      "prices": {
+        "usd":null,
+        "usd_foil":null,
+        "eur":null,
+        "tix":null
+      },
+      "related_uris":{
+        "gatherer":"https://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=465905&printed=true",
+        "tcgplayer_decks":"https://decks.tcgplayer.com/magic/deck/search?contains=Savage+Swipe&page=1&partner=Scryfall&utm_campaign=affiliate&utm_medium=scryfall&utm_source=scryfall",
+        "edhrec":"http://edhrec.com/route/?cc=Savage+Swipe","mtgtop8":"http://mtgtop8.com/search?MD_check=1&SB_check=1&cards=Savage+Swipe"
+      },
+      "purchase_uris":{
+        "tcgplayer":"https://shop.tcgplayer.com/productcatalog/product/show?ProductName=Savage+Swipe&partner=Scryfall&utm_campaign=affiliate&utm_medium=scryfall&utm_source=scryfall",
+        "cardmarket":"https://www.cardmarket.com/en/Magic/Products/Search?referrer=scryfall&searchString=Savage+Swipe&utm_campaign=card_prices&utm_medium=text&utm_source=scryfall",
+        "cardhoarder":"https://www.cardhoarder.com/cards?affiliate_id=scryfall&data%5Bsearch%5D=Savage+Swipe&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall"
+      }
+    }
+  ]
+}
+

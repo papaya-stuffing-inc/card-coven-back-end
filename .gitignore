@@ -1,3 +1,4 @@
 node_modules
 .env
-card-data
+card-data.json
+
