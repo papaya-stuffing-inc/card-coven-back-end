@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 require('./lib/utils/connect')();
 const initializeCardData = require('./lib/services/initialize-card-data');
 const updateCardData = require('./lib/services/update-card-data');
