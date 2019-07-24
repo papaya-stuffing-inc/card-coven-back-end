@@ -1,7 +1,7 @@
 // require('dotenv').config();
 require('./lib/utils/connect')();
-const initializeCardData = require('./lib/services/initialize-card-data');
-const updateCardData = require('./lib/services/update-card-data');
+// const initializeCardData = require('./lib/services/initialize-card-data');
+// const updateCardData = require('./lib/services/update-card-data');
 const app = require('./lib/app');
 const fs = require('fs');
 const schedule = require('node-schedule');
@@ -17,7 +17,7 @@ function runServer() {
     const scheduleUpdate = schedule.scheduleJob('0 30 16 * * 1,4', () => {
       //eslint-disable-next-line no-console
       console.log('Updating card data');
-      updateCardData();
+      // updateCardData();
     });
   });
 }
@@ -25,7 +25,7 @@ function runServer() {
 if(!cardDataExists) {
   //eslint-disable-next-line no-console
   console.log('No card data exists. Initializing card data now...');
-  initializeCardData(runServer);
+  // initializeCardData(runServer);
 } else {
   //eslint-disable-next-line no-console
   console.log('Card Data Exists');
