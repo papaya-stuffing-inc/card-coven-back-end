@@ -1,7 +1,8 @@
-// require('dotenv').config();
+require('dotenv').config();
 require('./lib/utils/connect')();
 const Card = require('./lib/models/Card');
 const fetchCardData = require('./lib/services/fetch-card-data');
+const fetchTransformCards = require('./lib/services/fetch-card-data');
 const mongoose = require('mongoose');
 const app = require('./lib/app');
 const schedule = require('node-schedule');
@@ -14,8 +15,12 @@ app.listen(PORT, () => {
   console.log(`You are listening to smoooth jazz on port ${PORT}`);
   Card.find()
     .then(res => {
-      console.log('DB', res);
-      if(res.length === 0) fetchCardData(); 
+      if(res.length === 0) {
+        //eslint-disable-next-line no-console
+        console.log('Card data does not exist, fetching card data now...')
+        fetchCardData(); 
+        fetchTransformCards();
+      }
     });
     
   //eslint-disable-next-line no-unused-vars
@@ -24,6 +29,7 @@ app.listen(PORT, () => {
     console.log('Updating card data');
     mongoose.connection.dropCollection('cards');
     fetchCardData();
+    fetchTransformCards();
   });
 });
 
