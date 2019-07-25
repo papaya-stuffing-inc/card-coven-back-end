@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 require('./lib/utils/connect')();
 const Card = require('./lib/models/Card');
 const fetchCardData = require('./lib/services/fetch-card-data');
@@ -19,7 +19,6 @@ app.listen(PORT, () => {
         //eslint-disable-next-line no-console
         console.log('Card data does not exist, fetching card data now...')
         fetchCardData(); 
-        fetchTransformCards();
       }
     });
     
