@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 require('./lib/utils/connect')();
 const Card = require('./lib/models/Card');
 const fetchCardData = require('./lib/services/fetch-card-data');
