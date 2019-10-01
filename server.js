@@ -23,7 +23,7 @@ app.listen(PORT, () => {
     });
     
   //eslint-disable-next-line no-unused-vars
-  const scheduleUpdate = schedule.scheduleJob('0 31 10 * * 2,4', () => {
+  const scheduleUpdate = schedule.scheduleJob('0 45 10 * * 2,4', () => {
     //eslint-disable-next-line no-console
     console.log('Updating card data');
     fetchCardData();
