@@ -1,9 +1,8 @@
-// require('dotenv').config();
+require('dotenv').config();
 require('./lib/utils/connect')();
 const Card = require('./lib/models/Card');
 const fetchCardData = require('./lib/services/fetch-card-data');
 const fetchTransformCards = require('./lib/services/fetch-card-data');
-const mongoose = require('mongoose');
 const app = require('./lib/app');
 const schedule = require('node-schedule');
 
